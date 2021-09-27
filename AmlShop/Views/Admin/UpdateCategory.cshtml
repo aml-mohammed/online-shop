@@ -1,0 +1,38 @@
+﻿@model AmlShop.Models.Category;
+@{
+    ViewData["Title"] = "UpdateCategory";
+    Layout = "~/Views/Shared/_AdminLayout1.cshtml";
+}
+
+<div class="container-fluid">
+    <h1 class="mt-4">Tables</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+        <li class="breadcrumb-item ">Categories</li>
+        <li class="breadcrumb-item active">Add New Category</li>
+    </ol>
+    <div class="card mb-4">
+
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table mr-1"></i>
+            Add New Category
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("UpdateCategory", "Admin", FormMethod.Post, new { enctype = "multipart/form.data" }))
+            {  
+                @Html.HiddenFor(m => m.CatId)
+            <div class="form-group">
+                <label class="control-label"> category name</label>
+                @Html.TextBoxFor(m => m.CatName, new { @class = "form-control", placeholder = "enter category name", required = "required", atuofocus = "autofocus" })
+         
+         @Html.ValidationMessageFor(m => m.CatName, "", new { @class = "text danger" })
+            </div>
+            <a OnClick="window.history.back();" class="btn btn-danger">cancel</a>
+            <input type="submit" class="btn btn-primary" value="Save" />
+            }
+            </div>
+        </div>
+    </div>
+
